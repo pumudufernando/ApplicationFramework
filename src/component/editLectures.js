@@ -100,10 +100,10 @@ export default class LecturesEdit extends Component {
     render() {
         return (
             <div style={{ marginTop: 10 }}>
-                <h3 align="center">Update Lectures</h3>
+                <h3 align="center">Update Details</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Lecture Id :</label>
+                        <label>Lecture/Student Id :</label>
                         <input
                             type="text"
                             className="form-control"
@@ -112,7 +112,7 @@ export default class LecturesEdit extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label>Lecture Name :</label>
+                        <label>Lecture/Student Name :</label>
                         <input type="text"
                                className="form-control"
                                value={this.state.lecName}
@@ -128,7 +128,7 @@ export default class LecturesEdit extends Component {
                         </select>
                     </div>
                     <div className="form-group">
-                        <label>Course Details :</label>
+                        <label>Details :</label>
                         <input
                             type="text"
                             className="form-control"

@@ -96,7 +96,7 @@ export default class LecturesCreate extends Component{
             <div >
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Lecture Id :</label>
+                        <label>Lecture/Student Id :</label>
                         <input
                             type="text"
                             className="form-control"
@@ -106,7 +106,7 @@ export default class LecturesCreate extends Component{
                         />
                     </div>
                     <div className="form-group">
-                        <label>Lecture Name :</label>
+                        <label>Lecture/Student Name :</label>
                         <input type="text"
                                className="form-control"
                                value={this.state.lecName}
@@ -124,7 +124,7 @@ export default class LecturesCreate extends Component{
                     </div>
 
                     <div className="form-group">
-                        <label>Lecturere Details :</label>
+                        <label>Details :</label>
                         <input
                             type="text"
                             className="form-control"

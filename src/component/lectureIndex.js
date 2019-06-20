@@ -30,10 +30,10 @@ export default class LectureIndex extends Component {
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                     <tr>
-                        <th>Lecture Id</th>
-                        <th>Lecture Name</th>
+                        <th>Lecture/Student Id</th>
+                        <th>Lecture/Student Name</th>
                         <th>Type</th>
-                        <th>Lecture Details</th>
+                        <th>Details</th>
                         <th>Faculty</th>
                         <th>Password</th>
                         <th colSpan="2">Action</th>
