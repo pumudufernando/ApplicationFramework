@@ -26,13 +26,16 @@ class LectureTableRow extends Component {
                     {this.props.obj.lecName}
                 </td>
                 <td>
-                    {this.props.obj.designation}
+                    {this.props.obj.typeOfEmp}
                 </td>
                 <td>
                     {this.props.obj.lecturedetails}
                 </td>
                 <td>
                     {this.props.obj.faculty}
+                </td>
+                <td>
+                    {this.props.obj.passwrd}
                 </td>
                 <td>
                     <Link to={"/lectureedit/"+this.props.obj._id} className="btn btn-primary">Edit</Link>

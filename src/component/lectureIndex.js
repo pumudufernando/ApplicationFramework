@@ -32,9 +32,10 @@ export default class LectureIndex extends Component {
                     <tr>
                         <th>Lecture Id</th>
                         <th>Lecture Name</th>
-                        <th>Designation</th>
+                        <th>Type</th>
                         <th>Lecture Details</th>
                         <th>Faculty</th>
+                        <th>Password</th>
                         <th colSpan="2">Action</th>
                     </tr>
                     </thead>

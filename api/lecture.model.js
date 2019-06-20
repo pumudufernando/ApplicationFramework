@@ -10,7 +10,7 @@ let Lecture = new Schema({
         type: String
     },
 
-    designation: {
+    typeOfEmp: {
         type: String
     },
 
@@ -20,7 +20,11 @@ let Lecture = new Schema({
 
     faculty: {
         type: String
-    }
+    },
+
+    passwrd: {
+        type: String
+    },
 
 
 },{

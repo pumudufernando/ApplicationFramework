@@ -46,9 +46,10 @@ lectureRoutes.route('/update/:id').post(function (req, res) {
         else {
             lecture.lecId = req.body.lecId;
             lecture.lecName = req.body.lecName;
-            lecture.designation = req.body.designation;
+            lecture.typeOfEmp = req.body.typeOfEmp;
             lecture.lecturedetails = req.body.lecturedetails;
             lecture.faculty = req.body.faculty;
+            lecture.passwrd = req.body.passwrd;
 
             lecture.save().then(lecture => {
                 res.json('Update complete');

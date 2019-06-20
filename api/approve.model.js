@@ -20,7 +20,7 @@ let Approve = new Schema({
 
     instructor: {
         type: String
-    }
+    },
 
 },{
     collection : 'approve'

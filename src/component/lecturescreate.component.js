@@ -8,18 +8,20 @@ export default class LecturesCreate extends Component{
         super(props);
         this.onClickLectureId = this.onClickLectureId.bind(this);
         this.onClickLectureName = this.onClickLectureName.bind(this);
-        this.onClickDesignation = this.onClickDesignation.bind(this);
+        this.onClickType = this.onClickType.bind(this);
         this.onClickLectureDetails = this.onClickLectureDetails.bind(this);
         this.onClickFaculty = this.onClickFaculty.bind(this);
+        this.onClickPassword = this.onClickPassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
 
         this.state = {
             lecId:'',
             lecName:'',
-            designation:'',
+            typeOfEmp:'',
             lecturedetails:'',
-            faculty:''
+            faculty:'',
+            passwrd:''
         }
 
     }
@@ -37,9 +39,9 @@ export default class LecturesCreate extends Component{
     }
 
 
-    onClickDesignation(e){
+    onClickType(e){
         this.setState({
-            designation : e.target.value
+            typeOfEmp : e.target.value
         });
     }
 
@@ -55,15 +57,22 @@ export default class LecturesCreate extends Component{
         })
     }
 
+    onClickPassword(e){
+        this.setState({
+            passwrd : e.target.value
+        })
+    }
+
     onSubmit(e){
         e.preventDefault();
 
         const obj = {
             lecId: this.state.lecId,
             lecName: this.state.lecName,
-            designation: this.state.designation,
+            typeOfEmp: this.state.typeOfEmp,
             lecturedetails:this.state.lecturedetails,
-            faculty:this.state.faculty
+            faculty:this.state.faculty,
+            passwrd:this.state.passwrd
 
         };
         axios.post('http://localhost:4000/lectures/add',obj)
@@ -72,9 +81,10 @@ export default class LecturesCreate extends Component{
         this.setState({
             lecId:'',
             lecName:'',
-            designation:'',
+            typeOfEmp:'',
             lecturedetails:'',
-            faculty:''
+            faculty:'',
+            passwrd:''
         })
 
     }
@@ -92,6 +102,7 @@ export default class LecturesCreate extends Component{
                             className="form-control"
                             value={this.state.lecId}
                             onChange={this.onClickLectureId}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -100,17 +111,18 @@ export default class LecturesCreate extends Component{
                                className="form-control"
                                value={this.state.lecName}
                                onChange={this.onClickLectureName}
+                               required
                         />
                     </div>
                     <div className="form-group">
-                        <label>Designation :</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={this.state.designation}
-                            onChange={this.onClickDesignation}
-                        />
+                        <label>Type :</label>
+                        <select name="Type" className="form-control" onChange={this.onClickType} value={this.state.typeOfEmp}>
+                            <option value="">Choose option</option>
+                            <option value="Instructors" >Instructors</option>
+                            <option value="Students" >Students</option>
+                        </select>
                     </div>
+
                     <div className="form-group">
                         <label>Lecturere Details :</label>
                         <input
@@ -118,6 +130,7 @@ export default class LecturesCreate extends Component{
                             className="form-control"
                             value={this.state.lecturedetails}
                             onChange={this.onClickLectureDetails}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -127,6 +140,17 @@ export default class LecturesCreate extends Component{
                             className="form-control"
                             value={this.state.faculty}
                             onChange={this.onClickFaculty}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Password :</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            value={this.state.passwrd}
+                            onChange={this.onClickPassword}
+                            required
                         />
                     </div>
                     <div className="form-group">
@@ -139,4 +163,13 @@ export default class LecturesCreate extends Component{
 
 }
 
-
+/*
+*  <div className="form-group">
+                        <label>Type :</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            value={this.state.typeOfEmp}
+                            onChange={this.onClickType}
+                            required
+                        />*/
