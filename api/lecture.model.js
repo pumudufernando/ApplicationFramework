@@ -25,6 +25,9 @@ let Lecture = new Schema({
     passwrd: {
         type: String
     },
+    email: {
+        type: String
+    },
 
 
 },{

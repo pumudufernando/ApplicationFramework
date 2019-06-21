@@ -36,6 +36,7 @@ export default class LectureIndex extends Component {
                         <th>Details</th>
                         <th>Faculty</th>
                         <th>Password</th>
+                        <th>Email</th>
                         <th colSpan="2">Action</th>
                     </tr>
                     </thead>

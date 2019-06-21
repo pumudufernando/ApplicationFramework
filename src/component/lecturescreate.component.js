@@ -12,6 +12,7 @@ export default class LecturesCreate extends Component{
         this.onClickLectureDetails = this.onClickLectureDetails.bind(this);
         this.onClickFaculty = this.onClickFaculty.bind(this);
         this.onClickPassword = this.onClickPassword.bind(this);
+        this.onClickEmail = this.onClickEmail.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
 
@@ -21,7 +22,8 @@ export default class LecturesCreate extends Component{
             typeOfEmp:'',
             lecturedetails:'',
             faculty:'',
-            passwrd:''
+            passwrd:'',
+            email:''
         }
 
     }
@@ -63,6 +65,12 @@ export default class LecturesCreate extends Component{
         })
     }
 
+    onClickEmail(e){
+        this.setState({
+            email : e.target.value
+        })
+    }
+
     onSubmit(e){
         e.preventDefault();
 
@@ -72,11 +80,31 @@ export default class LecturesCreate extends Component{
             typeOfEmp: this.state.typeOfEmp,
             lecturedetails:this.state.lecturedetails,
             faculty:this.state.faculty,
-            passwrd:this.state.passwrd
+            passwrd:this.state.passwrd,
+            email:this.state.email
 
         };
+
+        const obj1 = {
+            lecId: this.state.lecId,
+            passwrd:this.state.passwrd,
+            email:this.state.email
+        }
+
+        //add to the database
         axios.post('http://localhost:4000/lectures/add',obj)
             .then(res=> console.log(res.data));
+
+        //send an email
+        axios.post('http://localhost:4000/lectures/send',obj1)
+            .then(res=> {
+
+
+            })
+            .catch(function (error) {
+
+                console.log(error)
+            })
 
         this.setState({
             lecId:'',
@@ -84,7 +112,8 @@ export default class LecturesCreate extends Component{
             typeOfEmp:'',
             lecturedetails:'',
             faculty:'',
-            passwrd:''
+            passwrd:'',
+            email:''
         })
 
     }
@@ -150,6 +179,16 @@ export default class LecturesCreate extends Component{
                             className="form-control"
                             value={this.state.passwrd}
                             onChange={this.onClickPassword}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Email :</label>
+                        <input
+                            type="Email"
+                            className="form-control"
+                            value={this.state.email}
+                            onChange={this.onClickEmail}
                             required
                         />
                     </div>

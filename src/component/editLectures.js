@@ -11,6 +11,7 @@ export default class LecturesEdit extends Component {
         this.onClickLectureDetails = this.onClickLectureDetails.bind(this);
         this.onClickFaculty = this.onClickFaculty.bind(this);
         this.onClickPassword = this.onClickPassword.bind(this);
+        this.onClickEmail = this.onClickEmail.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
 
@@ -20,7 +21,8 @@ export default class LecturesEdit extends Component {
             typeOfEmp:'',
             lecturedetails:'',
             faculty:'',
-            passwrd:''
+            passwrd:'',
+            email:''
         }
 
     }
@@ -35,7 +37,8 @@ export default class LecturesEdit extends Component {
                     typeOfEmp: response.data.typeOfEmp,
                     lecturedetails: response.data.lecturedetails,
                     faculty: response.data.faculty,
-                    passwrd: response.data.passwrd
+                    passwrd: response.data.passwrd,
+                    email: response.data.email,
                 });
             })
             .catch(function (error) {
@@ -80,6 +83,12 @@ export default class LecturesEdit extends Component {
         })
     }
 
+    onClickEmail(e){
+        this.setState({
+            email : e.target.value
+        })
+    }
+
     onSubmit(e) {
         e.preventDefault();
         const obj = {
@@ -88,7 +97,8 @@ export default class LecturesEdit extends Component {
             typeOfEmp: this.state.typeOfEmp,
             lecturedetails: this.state.lecturedetails,
             faculty: this.state.faculty,
-            passwrd:this.state.passwrd
+            passwrd:this.state.passwrd,
+            email:this.state.email
 
         };
         axios.post('http://localhost:4000/lectures/update/'+this.props.match.params.id, obj)
@@ -125,6 +135,7 @@ export default class LecturesEdit extends Component {
                             <option value="">Choose option</option>
                             <option value="Instructors" >Instructors</option>
                             <option value="Students" >Students</option>
+                            <option value="Admin" >Admin</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -154,6 +165,16 @@ export default class LecturesEdit extends Component {
                             onChange={this.onClickPassword}
                             required
                         />
+                        <div className="form-group">
+                            <label>Email :</label>
+                            <input
+                                type="Email"
+                                className="form-control"
+                                value={this.state.email}
+                                onChange={this.onClickEmail}
+                                required
+                            />
+                        </div>
                     </div>
                     <div className="form-group">
                         <input type="submit"

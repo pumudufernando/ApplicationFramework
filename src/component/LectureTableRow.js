@@ -38,6 +38,9 @@ class LectureTableRow extends Component {
                     {this.props.obj.passwrd}
                 </td>
                 <td>
+                    {this.props.obj.email}
+                </td>
+                <td>
                     <Link to={"/lectureedit/"+this.props.obj._id} className="btn btn-primary">Edit</Link>
                 </td>
                 <td>

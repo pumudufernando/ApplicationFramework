@@ -1,3 +1,5 @@
+const nodemailer = require('nodemailer');
+
 const express = require('express');
 const lectureRoutes = express.Router();
 
@@ -50,6 +52,7 @@ lectureRoutes.route('/update/:id').post(function (req, res) {
             lecture.lecturedetails = req.body.lecturedetails;
             lecture.faculty = req.body.faculty;
             lecture.passwrd = req.body.passwrd;
+            lecture.email = req.body.email;
 
             lecture.save().then(lecture => {
                 res.json('Update complete');
@@ -68,5 +71,47 @@ lectureRoutes.route('/delete/:id').get(function (req, res) {
         else res.json('Successfully removed');
     });
 });
+
+
+var smtpTransport = nodemailer.createTransport({
+
+    service:'gmail',
+    host:'smtp.gmail.com',
+    port:587,
+    auth:{
+        user:'fernandopumudu@gmail.com',
+        pass:'0112616997'
+    },
+    tls:{rejectUnauthorized:false},
+    debug:true
+});
+
+lectureRoutes.route('/send').post(function(req,res) {
+    console.log("start");
+
+
+    var mailOptions = {
+        to: req.body.email,
+        subject: "Account Created ",
+        text: "Your Account was Created Sucessfully for Id :"+req.body.lecId
+
+    }
+
+
+//check whether mail is working
+    console.log(mailOptions);
+
+    smtpTransport.sendMail(mailOptions, function (error, response) {
+        if (error) {
+            console.log(error+"not working");
+
+        } else {
+            console.log("Message sent Succesfully : " + response.message);
+
+        }
+    });
+
+});
+
 
 module.exports = lectureRoutes;
